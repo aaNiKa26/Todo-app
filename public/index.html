@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Todo App — Task Dashboard</title>
+  <meta name="description" content="A simple PostgreSQL-powered todo board for personal task management.">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-icon">✓</span><div><strong>Todo App</strong><small>TASK MANAGER</small></div></div>
+      <div class="nav-label">WORKSPACE</div>
+      <div class="nav-active"><span>▦</span> Task Dashboard</div>
+      <div class="sidebar-bottom"><span class="status-dot"></span> PostgreSQL connected via Coolify<br><small>Todo application · v1.0</small></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><span class="breadcrumbs">Workspace <span>/</span> Tasks</span><span class="pill">Todo App</span></header>
+      <section class="hero"><div><div class="eyebrow">YOUR PRODUCTIVITY SPACE</div><h1>My Tasks <span>✳</span></h1><p>Stay on top of your work, one task at a time.</p></div><div class="hero-art">☑</div></section>
+      <section class="stats">
+        <div class="stat"><span>Total tasks</span><strong id="totalCount">0</strong><small>All your plans</small></div>
+        <div class="stat"><span>In progress</span><strong id="openCount">0</strong><small>Waiting to be done</small></div>
+        <div class="stat"><span>Completed</span><strong id="doneCount">0</strong><small>Great job!</small></div>
+      </section>
+      <section class="panel"><div class="panel-heading"><div><h2>Create a task</h2><p>What do you need to get done?</p></div></div>
+        <form id="createForm"><label for="titleInput">Task title</label><input id="titleInput" name="title" maxlength="200" placeholder="e.g. Deploy application on Coolify" required><label for="descriptionInput">Description <span>(optional)</span></label><textarea id="descriptionInput" maxlength="2000" rows="2" placeholder="Add a few notes for this task..."></textarea><button class="primary" type="submit" id="submitButton">+ Add Task</button></form>
+      </section>
+      <section class="panel tasks-panel"><div class="tasks-header"><div><h2>Task list <span class="count" id="listCount">0</span></h2><p>Everything you need to finish, all in one place.</p></div><div class="filters" role="group" aria-label="Filter tasks"><button type="button" class="filter active" data-filter="all">All</button><button type="button" class="filter" data-filter="active">Active</button><button type="button" class="filter" data-filter="completed">Completed</button></div></div>
+        <div id="message" class="message" role="status" hidden></div><div id="taskList" class="task-list"><div class="empty">Loading tasks...</div></div>
+      </section>
+      <footer>Todo App · Node.js + Express + PostgreSQL · Deployed with Coolify</footer>
+    </main>
+  </div>
+  <dialog id="editDialog"><form id="editForm"><h2>Edit task</h2><label for="editTitle">Task title</label><input id="editTitle" maxlength="200" required><label for="editDescription">Description</label><textarea id="editDescription" maxlength="2000" rows="3"></textarea><div class="dialog-actions"><button type="button" class="secondary" id="cancelEdit">Cancel</button><button type="submit" class="primary">Save changes</button></div></form></dialog>
+</body>
+</html>
